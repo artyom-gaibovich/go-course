@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+// func имя(параметры) тип_возврата { тело }
+
 // Базовая функция: имя, параметры, тип возврата
 func add(a, b int) int {
 	return a + b
