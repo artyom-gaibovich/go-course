@@ -32,7 +32,7 @@ import "fmt"
 func trace(name string) func() {
 	fmt.Println("→ вход:", name)
 	return func() {
-		// TODO: напечатай "← выход: <name>"
+		fmt.Println("выход", name)
 	}
 }
 
