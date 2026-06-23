@@ -48,7 +48,7 @@ func main() {
 	fmt.Println("=== Защита #3: идиома append([]T(nil), s...) ===")
 
 	data4 := []int{1, 2, 3, 4}
-	clone := append([]int(nil), data4[:2]...)
+	clone := append([]int(nil), data4[:4]...)
 	clone = append(clone, 100, 200)
 	fmt.Println("data4 после append к clone:", data4, "← не изменился!")
 	fmt.Println("clone:", clone)

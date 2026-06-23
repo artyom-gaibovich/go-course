@@ -15,6 +15,7 @@ func main() {
 	fmt.Println("data:", data, "len:", len(data), "cap:", cap(data))
 
 	// s[low:high]: len=high-low, cap=cap(data)-low, 10-1=9
+
 	s1 := data[1:4]
 	fmt.Println("data[1:4]:", s1, "len:", len(s1), "cap:", cap(s1))
 
@@ -28,6 +29,8 @@ func main() {
 
 	// Изменение через подслайс видно в оригинале
 	s1[0] = 99
+	// backing 1 99 3 4 5 6
+	// s1 = 1 [99 3 4] 5 6
 	fmt.Println("data после s1[0]=99:", data)
 
 	// Расширение через len <= cap — без реаллокации

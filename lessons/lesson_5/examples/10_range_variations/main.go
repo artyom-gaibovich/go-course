@@ -53,8 +53,9 @@ func main() {
 	funcs := make([]func(), 3)
 	values := [3]int{10, 20, 30}
 	for i, v := range values {
-		v := v
-		funcs[i] = func() { fmt.Print(v, " ") }
+		funcs[i] = func() {
+			fmt.Print(v, " ")
+		}
 	}
 	for _, f := range funcs {
 		f()
