@@ -21,14 +21,16 @@ type Good struct {
 	// 2
 }
 
+// struct{} - 0 байт
+
 type FinalZero struct {
-	x int64
-	z struct{}
+	x int64    // 8 байт
+	z struct{} // 8 байт
 }
 
 type ZeroFirst struct {
-	z struct{}
-	x int64
+	z struct{} // 0 байт
+	x int64    // 8 байт
 }
 
 func main() {
