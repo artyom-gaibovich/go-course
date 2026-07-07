@@ -20,7 +20,7 @@ func fetch(wg *sync.WaitGroup) {
 func main() {
 	var wg sync.WaitGroup
 
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 5; i++ {
 		wg.Add(1)
 		go fetch(&wg)
 	}

@@ -39,7 +39,7 @@ func main() {
 	// Засекаем время выполнения
 	start := time.Now()
 
-	data := make([]int, 2000000000)
+	data := make([]int, 64)
 	for i := range data {
 		data[i] = i + 1
 	}
