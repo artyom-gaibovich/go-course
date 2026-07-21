@@ -15,23 +15,16 @@
 package main
 
 import (
-	"fmt"
 	"time"
 )
 
 func compute(ch chan<- int, x int) {
 	time.Sleep(1 * time.Second)
-	ch <- x * x
 
 	// TODO: задержка + запись x*x в канал
 }
 
 func main() {
-	ch1 := make(chan int)
-	go compute(ch1, 1)
-
-	res := <-ch1
-	fmt.Println(res)
 
 	// TODO: создать канал, запустить горутину, прочитать и напечатать результат
 }
