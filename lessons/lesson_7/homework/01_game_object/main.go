@@ -43,6 +43,7 @@ import (
 
 type GamePlayer struct {
 	// TODO: спроектируй раскладку ровно на 64 байта
+	Gold
 }
 
 type Option func(*GamePlayer)

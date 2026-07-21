@@ -31,7 +31,7 @@
 Алгоритм:
   - Используйте два индекса: head (начало) и tail (следующая позиция для записи)
   - Backing array фиксированного размера создаётся один раз в NewRingBuffer
-  - При достижении конца массива индексы «оборачиваются»: idx = (idx+1) % capacity.
+  - При достижении конца массива индексы «оборачиваются»: idx = (idx+1) % capacity
   - Слайс не должен расти через append — только preallocated backing array
 
 Ограничения:
@@ -52,12 +52,6 @@
   Push(4)                 → [2,3,4]
   Pop(), Pop(), Pop()     → 2, 3, 4, empty=true
   Pop()                   → error: buffer is empty
-
-
-  // [1 2 3].
-  // Pop() = 1.
-  // [_, 2, 3]
-
 */
 
 package main
@@ -73,60 +67,58 @@ var (
 )
 
 type RingBuffer[T any] struct {
-	head     int
-	tail     int
-	data     []T
-	capacity int
-	size     int
+	// TODO: добавьте поля
+	data []T
+	head int
+	tail int
+	size int
 }
 
 func NewRingBuffer[T any](capacity int) *RingBuffer[T] {
-	return &RingBuffer[T]{
-		head:     0,
-		tail:     0,
-		data:     make([]T, capacity),
-		capacity: capacity,
-		size:     0,
-	}
+	// TODO: реализуйте
+	return &RingBuffer[T]{data: make([]T, capacity)}
 }
 
 func (rb *RingBuffer[T]) Push(v T) error {
-	if rb.size == rb.capacity {
+	// TODO: реализуйте
+	if rb.IsFull() {
 		return ErrFull
 	}
 	rb.data[rb.tail] = v
-	rb.tail = (rb.tail + 1) % rb.capacity
+	rb.tail = (rb.tail + 1) % rb.Cap()
 	rb.size++
 	return nil
 }
 
 func (rb *RingBuffer[T]) Pop() (T, error) {
+	// TODO: реализуйте
 	var zero T
-	if rb.size == 0 {
+	if rb.IsEmpty() {
 		return zero, ErrEmpty
 	}
-	elem := rb.data[rb.head]
-	rb.data[rb.head] = zero
-	rb.head = (rb.head + 1) % rb.capacity
+	value := rb.data[rb.head]
+	rb.head = (rb.head + 1) % rb.Cap()
 	rb.size--
-	return elem, nil
+	return value, nil
 }
 
 func (rb *RingBuffer[T]) Peek() (T, error) {
+	// TODO: реализуйте
 	var zero T
-	if rb.size == 0 {
+	if rb.IsEmpty() {
 		return zero, ErrEmpty
 	}
-	elem := rb.data[rb.head]
-	return elem, nil
+	return rb.data[rb.head], nil
 }
 
 func (rb *RingBuffer[T]) Len() int {
+	// TODO: реализуйте
 	return rb.size
 }
 
 func (rb *RingBuffer[T]) Cap() int {
-	return rb.capacity
+	// TODO: реализуйте
+	return len(rb.data)
 }
 
 func (rb *RingBuffer[T]) IsFull() bool {

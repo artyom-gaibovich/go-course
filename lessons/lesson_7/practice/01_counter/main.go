@@ -22,9 +22,14 @@ type Counter struct {
 }
 
 // TODO: реализуй Inc()
+func (c *Counter) Inc() {
+	c.count++
+}
 
 // TODO: реализуй Value() int
-
+func (c *Counter) Value() int {
+	return c.count
+}
 func main() {
 	c := &Counter{}
 	c.Inc()

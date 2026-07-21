@@ -30,15 +30,32 @@ type Server struct {
 }
 
 // TODO: тип Option
+type Option func(*Server)
 
 // TODO: WithPort, WithTimeout
+func WithPort(port int) Option {
+	return func(s *Server) {
+		s.Port = port
+	}
+}
+func WithTimeout(timeout int) Option {
+	return func(s *Server) {
+		s.Timeout = timeout
+	}
+}
 
 // TODO: NewServer
-func NewServer(host string /* opts ...Option */) *Server {
-	return nil
+func NewServer(host string, opts ...Option) *Server {
+	server := &Server{
+		Host: host,
+	}
+	for _, opt := range opts {
+		opt(server)
+	}
+	return server
 }
 
 func main() {
-	s := NewServer("localhost" /*, WithPort(9090) */)
+	s := NewServer("localhost", WithPort(9090))
 	fmt.Printf("%+v\n", s)
 }
